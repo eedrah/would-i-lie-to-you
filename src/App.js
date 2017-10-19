@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import firebase from './firebase'
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {data : ''}
+    const newNode = firebase.database().ref('/').push()
+    newNode.set({'hi there':'fish'})
+  }
+  componentWillMount() {
+    firebase.database().ref('/').on('value', (data) => {
+      this.setState({data: data.val().length})
+    })
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {this.state.data}
         </p>
       </div>
     );
   }
 }
 
-export default App;
+export default App;         
