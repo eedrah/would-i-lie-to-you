@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import firebase from './firebase'
-import './App.css';
+import './App.css'
+import FormEnterLie from './FormEnterLie'
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {data : ''}
-    const newNode = firebase.database().ref('/').push()
-    newNode.set({'hi there':'fish'})
+    this.state = { data: '' }
+    const newNode = firebase
+      .database()
+      .ref('/')
+      .push()
+    newNode.set({ 'hi there': 'fish' })
   }
   componentWillMount() {
-    firebase.database().ref('/').on('value', (data) => {
-      this.setState({data: data.val().length})
-    })
+    firebase
+      .database()
+      .ref('/')
+      .on('value', data => {
+        this.setState({ data: data.val().length })
+      })
   }
   render() {
     return (
@@ -20,12 +27,11 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          {this.state.data}
-        </p>
+        <p className="App-intro">{this.state.data}</p>
+        <FormEnterLie />
       </div>
-    );
+    )
   }
 }
 
-export default App;         
+export default App
