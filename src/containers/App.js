@@ -3,7 +3,7 @@ import { connect } from 'redux'
 import PropTypes from 'prop-types'
 
 //import firebase from './firebase'
-import postLie from './actionCreators'
+import postLie from '../actionCreators/postLie'
 
 import './App.css'
 import FormEnterLie from './FormEnterLie'

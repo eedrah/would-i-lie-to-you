@@ -1,9 +1,9 @@
-import firebase from './firebase'
+import firebase from '../firebase'
 import {
   POST_LIE_REQUEST,
   POST_LIE_SUCCESS,
   POST_LIE_FAILURE,
-} from './actions.js'
+} from '../actions.js'
 
 const postLieRequest = () => ({
   type: POST_LIE_REQUEST,
@@ -27,7 +27,7 @@ const firebasePostLie = lie => {
   })
 }
 
-export const postLie = lie => dispatch => {
+export default lie => dispatch => {
   dispatch(postLieRequest())
   return firebasePostLie.then(
     () => dispatch(postLieSuccess()),
