@@ -1,25 +1,41 @@
 import React, { Component } from 'react'
-import firebase from './firebase'
+import { connect } from 'redux'
+import PropTypes from 'prop-types'
+
+//import firebase from './firebase'
+import postLie from './actionCreators'
+
 import './App.css'
 import FormEnterLie from './FormEnterLie'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { data: '' }
-    const newNode = firebase
-      .database()
-      .ref('/')
-      .push()
-    newNode.set({ 'hi there': 'fish' })
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    ui: PropTypes.shape({
+      isPostingLie: PropTypes.bool.isRequired,
+      proposedLie: PropTypes.string.isRequired,
+      errorHasOccurred: PropTypes.bool.isRequired,
+    }),
   }
-  componentWillMount() {
-    firebase
-      .database()
-      .ref('/')
-      .on('value', data => {
-        this.setState({ data: data.val().length })
-      })
+  //constructor(props) {
+  //  super(props)
+  //  this.state = { data: '' }
+  //  const newNode = firebase
+  //    .database()
+  //    .ref('/')
+  //    .push()
+  //  newNode.set({ 'hi there': 'fish' })
+  //}
+  //componentWillMount() {
+  //  firebase
+  //    .database()
+  //    .ref('/')
+  //    .on('value', data => {
+  //      this.setState({ data: data.val().length })
+  //    })
+  //}
+  handleSubmitLie = lie => {
+    this.props.dispatch(postLie(lie))
   }
   render() {
     return (
@@ -28,10 +44,15 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">{this.state.data}</p>
-        <FormEnterLie />
+        <FormEnterLie props={this.props.ui} />
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  const { ui } = state
+  return { ui }
+}
+
+export default connect(mapStateToProps)(App)

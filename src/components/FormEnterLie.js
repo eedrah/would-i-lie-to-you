@@ -17,6 +17,11 @@ function FormEnterLie({ onSubmit }) {
 
 FormEnterLie.defaultProps = {}
 
-FormEnterLie.propTypes = { onSubmit: PropTypes.func.isRequired }
+FormEnterLie.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isPostingLie: PropTypes.bool.isRequired,
+  proposedLie: PropTypes.string.isRequired,
+  errorHasOccurred: PropTypes.bool.isRequired,
+}
 
 export default FormEnterLie
