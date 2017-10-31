@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './FormEnterLie.css'
+//import styles from './FormEnterLie.css'
 
 function FormEnterLie({
   onSubmitLie,
   isPostingLie,
-  proposedLiesimethingsmething,
+  //proposedLiesimethingsmething,
 }) {
   return (
-    <div className={styles.base}>
+    <div /*className={styles.base}*/>
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -30,7 +30,7 @@ FormEnterLie.defaultProps = {}
 FormEnterLie.propTypes = {
   onSubmitLie: PropTypes.func.isRequired,
   isPostingLie: PropTypes.bool.isRequired,
-  proposedLie: PropTypes.string.isRequired,
+  //proposedLie: PropTypes.string.isRequired,
   errorHasOccurred: PropTypes.bool.isRequired,
 }
 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'redux'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 //import firebase from './firebase'
 import postLie from '../actionCreators/postLie'
 
 import './App.css'
-import FormEnterLie from './FormEnterLie'
+import FormEnterLie from '../components/FormEnterLie'
 
 class App extends Component {
   static propTypes = {
@@ -43,8 +43,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">{this.state.data}</p>
-        <FormEnterLie props={this.props.ui} />
+        {/*<p className="App-intro">{this.state.data}</p>*/}
+        <FormEnterLie {...this.props.ui} onSubmitLie={this.handleSubmitLie} />
       </div>
     )
   }
