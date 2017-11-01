@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "lies": {
+      "$something": {
+        ".write": "!data.exists()"
+      },
+      ".read": true
+    }
+  }
+}
