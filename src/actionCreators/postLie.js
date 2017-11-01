@@ -18,7 +18,10 @@ const postLieFailure = () => ({
 })
 
 const firebasePostLie = lie => {
-  const lieRef = firebase.database().ref('lies')
+  const lieRef = firebase
+    .database()
+    .ref('lies')
+    .push()
   return lieRef.set({
     id: lieRef.key,
     language: 'en',
