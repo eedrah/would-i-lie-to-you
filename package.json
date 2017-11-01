@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "firebase:update-rules": "cd scripts && node ./updateFirebaseRules.js",
+    "firebase:retrieve-rules": "cd scripts && node ./retrieveFirebaseRules.js"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.6.0",
