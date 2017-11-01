@@ -29,7 +29,7 @@ const firebasePostLie = lie => {
 
 export default lie => dispatch => {
   dispatch(postLieRequest())
-  return firebasePostLie.then(
+  return firebasePostLie(lie).then(
     () => dispatch(postLieSuccess()),
     () => dispatch(postLieFailure())
   )

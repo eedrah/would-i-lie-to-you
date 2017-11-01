@@ -12,7 +12,7 @@ function FormEnterLie({
       <form
         onSubmit={e => {
           e.preventDefault()
-          onSubmitLie(e.target.value.get('enteredLie'))
+          onSubmitLie(new FormData(e.target).get('enteredLie'))
         }}
       >
         <label>
