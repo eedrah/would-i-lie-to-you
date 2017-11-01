@@ -1,8 +1,20 @@
 {
   "rules": {
     "lies": {
-      "$something": {
-        ".write": "!data.exists()"
+      "$lieId": {
+        ".write": "!data.exists() && newData.exists()",
+        ".validate":
+          "newData.hasChildren(['createdUtc', 'id', 'language', 'statement'])",
+        "statement": {
+          ".validate":
+            "newData.isString() && newData.val().length > 0 && newData.val().length < 1000"
+        },
+        "language": {
+          ".validate": "newData.isString() && newData.val() === 'en'"
+        },
+        "id": { ".validate": "newData.val() === $lieId" },
+        "createdUtc": { ".validate": "newData.val() <= now" },
+        "$other": { ".validate": false }
       },
       ".read": true
     }
