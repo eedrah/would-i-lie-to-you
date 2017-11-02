@@ -13,6 +13,11 @@ fs.readFile(
         PROJECT_NAME +
         '.firebaseio.com/.settings/rules.json?auth=' +
         key.trim()
-    ).pipe(fs.createWriteStream('../db/rules.json'))
+    )
+      .on('error', err => console.log(err))
+      .on('response', response =>
+        console.log(response.statusCode, response.statusMessage)
+      )
+      .pipe(fs.createWriteStream('../db/rules.json'))
   }
 )

@@ -1,6 +1,7 @@
 {
   "rules": {
     "lies": {
+      ".indexOn": "lieCount",
       "$lieId": {
         ".write": "!data.exists() && newData.exists()",
         ".validate":
@@ -14,6 +15,9 @@
         },
         "id": { ".validate": "newData.val() === $lieId" },
         "createdUtc": { ".validate": "newData.val() <= now" },
+        "lieCount": {
+          ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() % 1 === 0"
+        },
         "$other": { ".validate": false }
       },
       ".read": true

@@ -18,5 +18,9 @@ fs.readFile(
             key.trim()
         )
       )
+      .on('error', err => console.log(err))
+      .on('response', response =>
+        console.log(response.statusCode, response.statusMessage)
+      )
   }
 )
