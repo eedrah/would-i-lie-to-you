@@ -1,5 +1,3 @@
-import firebase from 'firebase'
-
-if (process.env.NODE_ENV !== 'production') {
-  window.firebase = firebase
-}
+window.firebase = require('./firebase').default
+window.getLie = require('./actionCreators/getLie.js').default
+window.getLieCount = require('./actionCreators/private/getLieCount.js').default

@@ -8,9 +8,12 @@ import { createLogger } from 'redux-logger'
 import App from './containers/App'
 import registerServiceWorker from './registerServiceWorker'
 import reducer from './reducer'
-import './developmentSettings.js'
 
 import './index.css'
+
+if (process.env.NODE_ENV !== 'production') {
+  require('./developmentSettings.js')
+}
 
 const middleware = [thunk]
 if (process.env.NODE_ENV !== 'production') {
