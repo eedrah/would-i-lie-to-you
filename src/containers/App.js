@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-//import firebase from './firebase'
 import postLie from '../actionCreators/postLie'
+import getLie from '../actionCreators/getLie'
 
 import './App.css'
 import FormEnterLie from '../components/FormEnterLie'
@@ -16,24 +16,11 @@ class App extends Component {
       proposedLie: PropTypes.string.isRequired,
       errorHasOccurred: PropTypes.bool.isRequired,
     }),
+    givenLie: PropTypes.string.isRequired,
   }
-  //constructor(props) {
-  //  super(props)
-  //  this.state = { data: '' }
-  //  const newNode = firebase
-  //    .database()
-  //    .ref('/')
-  //    .push()
-  //  newNode.set({ 'hi there': 'fish' })
-  //}
-  //componentWillMount() {
-  //  firebase
-  //    .database()
-  //    .ref('/')
-  //    .on('value', data => {
-  //      this.setState({ data: data.val().length })
-  //    })
-  //}
+  componentWillMount() {
+    this.props.dispatch(getLie())
+  }
   handleSubmitLie = lie => {
     this.props.dispatch(postLie(lie))
   }
@@ -44,6 +31,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         {/*<p className="App-intro">{this.state.data}</p>*/}
+      <h2>{this.props.givenLie}</h2>
         <FormEnterLie {...this.props.ui} onSubmitLie={this.handleSubmitLie} />
       </div>
     )
@@ -51,8 +39,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { ui } = state
-  return { ui }
+  const { ui, data } = state
+  return { ui, givenLie: data.givenLie }
 }
 
 export default connect(mapStateToProps)(App)
