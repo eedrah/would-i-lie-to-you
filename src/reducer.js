@@ -7,6 +7,7 @@ import {
   GET_LIE_SUCCESS,
   GET_LIE_FAILURE,
   OPEN_ENTER_LIE,
+  CLOSE_ENTER_LIE,
   CHANGE_ENTERED_LIE,
 } from './actions.js'
 
@@ -25,6 +26,11 @@ const enterLie = (
       return {
         ...state,
         isActive: true,
+      }
+    case CLOSE_ENTER_LIE:
+      return {
+        ...state,
+        isActive: false,
       }
     case CHANGE_ENTERED_LIE:
       return {
