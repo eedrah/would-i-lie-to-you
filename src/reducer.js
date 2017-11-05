@@ -8,11 +8,12 @@ import {
   GET_LIE_FAILURE,
 } from './actions.js'
 
-const ui = (
+const enterLie = (
   state = {
+    active: false,
     isGettingLie: false,
     isPostingLie: false,
-    proposedLie: '',
+    enteredLie: '',
     errorHasOccurred: false,
   },
   action
@@ -27,7 +28,7 @@ const ui = (
       return {
         ...state,
         isPostingLie: false,
-        proposedLie: '',
+        enteredLie: '',
       }
     case POST_LIE_FAILURE:
       return {
@@ -56,7 +57,7 @@ const ui = (
   }
 }
 
-const data = (state = { givenLie: '' }, action) => {
+const playGame = (state = { active: false, givenLie: '' }, action) => {
   switch (action.type) {
     case GET_LIE_SUCCESS:
       return { ...state, givenLie: action.lie }
@@ -64,9 +65,18 @@ const data = (state = { givenLie: '' }, action) => {
       return state
   }
 }
+
+const readRules = (state = { active: false }, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({
-  ui,
-  data,
+  enterLie,
+  playGame,
+  readRules,
 })
 
 export default reducer

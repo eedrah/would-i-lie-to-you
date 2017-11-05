@@ -39,8 +39,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { enterLie, playGame, readRules } = state
-  return { isEnteringLie, isPlayingGame, isReadingRules }
+  const { ui, data } = state
+  return { ui, givenLie: data.givenLie }
 }
 
 export default connect(mapStateToProps)(App)
