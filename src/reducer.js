@@ -6,11 +6,13 @@ import {
   GET_LIE_REQUEST,
   GET_LIE_SUCCESS,
   GET_LIE_FAILURE,
+  OPEN_ENTER_LIE,
+  CHANGE_ENTERED_LIE,
 } from './actions.js'
 
 const enterLie = (
   state = {
-    active: false,
+    isActive: false,
     isGettingLie: false,
     isPostingLie: false,
     enteredLie: '',
@@ -19,6 +21,16 @@ const enterLie = (
   action
 ) => {
   switch (action.type) {
+    case OPEN_ENTER_LIE:
+      return {
+        ...state,
+        isActive: true,
+      }
+    case CHANGE_ENTERED_LIE:
+      return {
+        ...state,
+        enteredLie: action.lie,
+      }
     case POST_LIE_REQUEST:
       return {
         ...state,
@@ -57,7 +69,7 @@ const enterLie = (
   }
 }
 
-const playGame = (state = { active: false, givenLie: '' }, action) => {
+const playGame = (state = { isActive: false, givenLie: '' }, action) => {
   switch (action.type) {
     case GET_LIE_SUCCESS:
       return { ...state, givenLie: action.lie }
@@ -66,7 +78,7 @@ const playGame = (state = { active: false, givenLie: '' }, action) => {
   }
 }
 
-const readRules = (state = { active: false }, action) => {
+const readRules = (state = { isActive: false }, action) => {
   switch (action.type) {
     default:
       return state

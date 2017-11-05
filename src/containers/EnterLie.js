@@ -2,45 +2,42 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import changeEnteredLie from '../actionCreators/changeEnteredLie'
 import postLie from '../actionCreators/postLie'
-import getLie from '../actionCreators/getLie'
 
 import './App.css'
 import FormEnterLie from '../components/FormEnterLie'
 
 class App extends Component {
   static propTypes = {
+    isPostingLie: PropTypes.bool.isRequired,
+    enteredLie: PropTypes.string.isRequired,
+    errorHasOccurred: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
-    ui: PropTypes.shape({
-      isPostingLie: PropTypes.bool.isRequired,
-      enteredLie: PropTypes.string.isRequired,
-      errorHasOccurred: PropTypes.bool.isRequired,
-    }),
-    givenLie: PropTypes.string.isRequired,
-  }
-  componentWillMount() {
-    this.props.dispatch(getLie())
   }
   handleSubmitLie = lie => {
     this.props.dispatch(postLie(lie))
   }
+  handleChangeEnteredLie = lie => {
+    this.props.dispatch(changeEnteredLie(lie))
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        {/*<p className="App-intro">{this.state.data}</p>*/}
-        <h2>{this.props.givenLie}</h2>
-        <FormEnterLie {...this.props.ui} onSubmitLie={this.handleSubmitLie} />
-      </div>
+      <FormEnterLie
+        isPostingLie={this.props.isPostingLie}
+        enteredLie={this.props.enteredLie}
+        errorHasOccurred={this.props.errorHasOccurred}
+        onSubmitLie={this.handleSubmitLie}
+        onChangeEnteredLie={this.handleChangeEnteredLie}
+      />
     )
   }
 }
 
 const mapStateToProps = state => {
-  const { ui, data } = state
-  return { ui, givenLie: data.givenLie }
+  const { enterLie } = state
+  //const { isPostingLie, enteredLie, errorHasOccurred, } = enterLie
+  return { ...enterLie }
 }
 
 export default connect(mapStateToProps)(App)

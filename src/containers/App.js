@@ -2,37 +2,30 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import postLie from '../actionCreators/postLie'
-import getLie from '../actionCreators/getLie'
+import openEnterLie from '../actionCreators/openEnterLie'
+import EnterLie from '../containers/EnterLie'
 
 import './App.css'
-import FormEnterLie from '../components/FormEnterLie'
 
 class App extends Component {
   static propTypes = {
+    isEnteringLie: PropTypes.bool.isRequired,
+    isPlayingGame: PropTypes.bool.isRequired,
+    isReadingRules: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
-    ui: PropTypes.shape({
-      isPostingLie: PropTypes.bool.isRequired,
-      enteredLie: PropTypes.string.isRequired,
-      errorHasOccurred: PropTypes.bool.isRequired,
-    }),
-    givenLie: PropTypes.string.isRequired,
   }
-  componentWillMount() {
-    this.props.dispatch(getLie())
-  }
-  handleSubmitLie = lie => {
-    this.props.dispatch(postLie(lie))
+  handleEnterLie = () => {
+    this.props.dispatch(openEnterLie())
   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Would I Lie To You?</h1>
         </header>
         {/*<p className="App-intro">{this.state.data}</p>*/}
-        <h2>{this.props.givenLie}</h2>
-        <FormEnterLie {...this.props.ui} onSubmitLie={this.handleSubmitLie} />
+        <h2 onClick={this.handleEnterLie}>Enter Lies Into The Database</h2>
+        {this.props.isEnteringLie ? <EnterLie /> : null}
       </div>
     )
   }
@@ -40,7 +33,11 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const { enterLie, playGame, readRules } = state
-  return { isEnteringLie, isPlayingGame, isReadingRules }
+  return {
+    isEnteringLie: enterLie.isActive,
+    isPlayingGame: playGame.isActive,
+    isReadingRules: readRules.isActive,
+  }
 }
 
 export default connect(mapStateToProps)(App)

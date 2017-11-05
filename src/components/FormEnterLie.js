@@ -2,12 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 //import styles from './FormEnterLie.css'
 
-function FormEnterLie({ onSubmitLie, isPostingLie, enteredLie }) {
+function FormEnterLie({
+  onSubmitLie,
+  isPostingLie,
+  enteredLie,
+  onChangeEnteredLie,
+}) {
   return (
     <div /*className={styles.base}*/>
       <label>
         Enter lie:
-        <input type="text" value={enteredLie} />
+        <input
+          type="text"
+          value={enteredLie}
+          onChange={e => onChangeEnteredLie(e.target.value)}
+        />
       </label>
       <input
         type="submit"
@@ -24,6 +33,7 @@ function FormEnterLie({ onSubmitLie, isPostingLie, enteredLie }) {
 FormEnterLie.defaultProps = {}
 
 FormEnterLie.propTypes = {
+  onChangeEnteredLie: PropTypes.func.isRequired,
   onSubmitLie: PropTypes.func.isRequired,
   isPostingLie: PropTypes.bool.isRequired,
   enteredLie: PropTypes.string.isRequired,
