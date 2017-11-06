@@ -5,6 +5,7 @@ import submitTruth from '../actionCreators/submitTruth'
 import changeEnteredTruth from '../actionCreators/changeEnteredTruth'
 
 import FormEnterTruth from '../components/FormEnterTruth'
+import FormDisplayStatement from '../components/FormDisplayStatement'
 
 import { connect } from 'react-redux'
 //import styles from './PlayGame.css'
@@ -32,7 +33,7 @@ class PlayGame extends Component {
         />
       )
     }
-    return <div>{this.props.statement}</div>
+    return <FormDisplayStatement statement={this.props.statement} />
   }
 }
 
