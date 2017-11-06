@@ -2,7 +2,7 @@ import firebase from '../../firebase'
 import getLieCount from './getLieCount'
 import {
   GET_LIE_REQUEST,
-  GET_LIE_SUCCESS,
+  CHANGE_STATEMENT,
   GET_LIE_FAILURE,
 } from '../../actions.js'
 
@@ -11,8 +11,8 @@ const getLieRequest = () => ({
 })
 
 const getLieSuccess = lie => ({
-  type: GET_LIE_SUCCESS,
-  lie: lie,
+  type: CHANGE_STATEMENT,
+  statement: lie,
 })
 
 const getLieFailure = () => ({

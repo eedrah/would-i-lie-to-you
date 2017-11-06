@@ -12,35 +12,36 @@ import { connect } from 'react-redux'
 class PlayGame extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    givenLie: PropTypes.string.isRequired,
+    statement: PropTypes.string.isRequired,
     enteredTruth: PropTypes.string.isRequired,
     isEnteringTruth: PropTypes.bool.isRequired,
   }
-  handleSubmitTruth = () => {
-    submitTruth()
+  handleSubmitTruth = truth => {
+    this.props.dispatch(submitTruth(truth))
   }
   handleChangeEnteredTruth = truth => {
-    changeEnteredTruth(truth)
+    this.props.dispatch(changeEnteredTruth(truth))
   }
   render() {
     if (this.props.isEnteringTruth) {
       return (
-        <FormEnterTruth>
+        <FormEnterTruth
           onChangeEnteredTruth={this.handleChangeEnteredTruth}
           onSubmitTruth={this.handleSubmitTruth}
           enteredTruth={this.props.enteredTruth}
-        </FormEnterTruth>
+        />
       )
     }
-    return <div>{this.props.givenLie}</div>
+    return <div>{this.props.statement}</div>
   }
 }
 
 function mapStateToProps(state) {
   const { playGame } = state
   return {
-    givenLie: playGame.givenLie,
+    statement: playGame.statement,
     isEnteringTruth: playGame.isEnteringTruth,
+    enteredTruth: playGame.enteredTruth,
   }
 }
 

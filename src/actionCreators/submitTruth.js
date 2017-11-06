@@ -1,7 +1,7 @@
 import { CHANGE_STATEMENT } from '../actions'
 import { TRUTH, LIE } from '../enums/statementTypes'
 
-import getLie from './private/getLie';
+import getLie from './private/getLie'
 
 const decideTruthOrLie = () => {
   if (Math.random() < 0.5) {
@@ -18,7 +18,10 @@ export default truth => dispatch => {
         type: CHANGE_STATEMENT,
         statement: truth,
       })
+      break
     case LIE:
-      getLie()
+      dispatch(getLie())
+      break
+    default:
   }
 }

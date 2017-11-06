@@ -4,7 +4,6 @@ import {
   POST_LIE_SUCCESS,
   POST_LIE_FAILURE,
   GET_LIE_REQUEST,
-  GET_LIE_SUCCESS,
   GET_LIE_FAILURE,
   OPEN_ENTER_LIE,
   CLOSE_ENTER_LIE,
@@ -12,12 +11,12 @@ import {
   OPEN_PLAY_GAME,
   CLOSE_PLAY_GAME,
   CHANGE_ENTERED_TRUTH,
+  CHANGE_STATEMENT,
 } from './actions.js'
 
 const enterLie = (
   state = {
     isActive: false,
-    isGettingLie: false,
     isPostingLie: false,
     enteredLie: '',
     errorHasOccurred: false,
@@ -57,22 +56,6 @@ const enterLie = (
         isPostingLie: false,
         errorHasOccurred: true,
       }
-    case GET_LIE_REQUEST:
-      return {
-        ...state,
-        isGettingLie: true,
-      }
-    case GET_LIE_SUCCESS:
-      return {
-        ...state,
-        isGettingLie: false,
-      }
-    case GET_LIE_FAILURE:
-      return {
-        ...state,
-        isGettingLie: false,
-        errorHasOccurred: true,
-      }
     default:
       return state
   }
@@ -81,21 +64,51 @@ const enterLie = (
 const playGame = (
   state = {
     isActive: false,
-    givenLie: '',
+    statement: '',
     isEnteringTruth: true,
     enteredTruth: '',
+    isGettingLie: false,
+    errorHasOccurred: false,
   },
   action
 ) => {
   switch (action.type) {
     case OPEN_PLAY_GAME:
-      return { ...state, isActive: true }
+      return {
+        ...state,
+        isActive: true,
+        isEnteringTruth: true,
+      }
     case CLOSE_PLAY_GAME:
-      return { ...state, isActive: false }
+      return {
+        ...state,
+        isActive: false,
+        isEnteringTruth: false,
+      }
     case CHANGE_ENTERED_TRUTH:
-      return { ...state, enteredTruth: action.truth }
-    case GET_LIE_SUCCESS:
-      return { ...state, givenLie: action.lie }
+      return {
+        ...state,
+        enteredTruth: action.truth,
+      }
+    case GET_LIE_REQUEST:
+      return {
+        ...state,
+        isGettingLie: true,
+        isEnteringTruth: false,
+      }
+    case CHANGE_STATEMENT:
+      return {
+        ...state,
+        isGettingLie: false,
+        isEnteringTruth: false,
+        statement: action.statement,
+      }
+    case GET_LIE_FAILURE:
+      return {
+        ...state,
+        isGettingLie: false,
+        errorHasOccurred: true,
+      }
     default:
       return state
   }
