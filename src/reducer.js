@@ -26,6 +26,11 @@ const enterLie = (
   action
 ) => {
   switch (action.type) {
+    case OPEN_PLAY_GAME:
+      return {
+        ...state,
+        isActive: false,
+      }
     case OPEN_ENTER_LIE:
       return {
         ...state,
@@ -76,6 +81,11 @@ const playGame = (
   action
 ) => {
   switch (action.type) {
+    case OPEN_ENTER_LIE:
+      return {
+        ...state,
+        isActive: false,
+      }
     case OPEN_PLAY_GAME:
       return {
         ...state,
