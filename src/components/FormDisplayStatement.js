@@ -11,6 +11,9 @@ function FormDisplayStatement({ statement, onReset }) {
   )
 }
 
-FormDisplayStatement.propTypes = { statement: PropTypes.string.isRequired }
+FormDisplayStatement.propTypes = {
+  statement: PropTypes.string.isRequired,
+  onReset: PropTypes.func.isRequired,
+}
 
 export default FormDisplayStatement

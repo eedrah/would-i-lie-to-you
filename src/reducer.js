@@ -13,6 +13,7 @@ import {
   CHANGE_ENTERED_TRUTH,
   CHANGE_STATEMENT,
   RESET_STATEMENT,
+  IS_LOADING,
 } from './actions.js'
 
 const enterLie = (
@@ -70,6 +71,7 @@ const playGame = (
     enteredTruth: '',
     isGettingLie: false,
     errorHasOccurred: false,
+    isLoading: false,
   },
   action
 ) => {
@@ -96,6 +98,7 @@ const playGame = (
         ...state,
         isGettingLie: true,
         isEnteringTruth: false,
+        isLoading: true,
       }
     case CHANGE_STATEMENT:
       return {
@@ -103,17 +106,25 @@ const playGame = (
         isGettingLie: false,
         isEnteringTruth: false,
         statement: action.statement,
+        isLoading: false,
       }
     case GET_LIE_FAILURE:
       return {
         ...state,
         isGettingLie: false,
         errorHasOccurred: true,
+        isLoading: false,
       }
     case RESET_STATEMENT:
       return {
         ...state,
         isEnteringTruth: true,
+      }
+    case IS_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+        isEnteringTruth: false,
       }
     default:
       return state

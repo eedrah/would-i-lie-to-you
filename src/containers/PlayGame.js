@@ -17,6 +17,7 @@ class PlayGame extends Component {
     statement: PropTypes.string.isRequired,
     enteredTruth: PropTypes.string.isRequired,
     isEnteringTruth: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
   }
   handleSubmitTruth = truth => {
     this.props.dispatch(submitTruth(truth))
@@ -37,6 +38,9 @@ class PlayGame extends Component {
         />
       )
     }
+    if (this.props.isLoading) {
+      return <p>Loading...</p>
+    }
     return (
       <FormDisplayStatement
         statement={this.props.statement}
@@ -52,6 +56,7 @@ function mapStateToProps(state) {
     statement: playGame.statement,
     isEnteringTruth: playGame.isEnteringTruth,
     enteredTruth: playGame.enteredTruth,
+    isLoading: playGame.isLoading,
   }
 }
 
