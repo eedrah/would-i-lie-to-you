@@ -1,10 +1,10 @@
-import firebase from '../firebase'
-import getLieCount from './private/getLieCount'
+import firebase from '../../firebase'
+import getLieCount from './getLieCount'
 import {
   GET_LIE_REQUEST,
   GET_LIE_SUCCESS,
   GET_LIE_FAILURE,
-} from '../actions.js'
+} from '../../actions.js'
 
 const getLieRequest = () => ({
   type: GET_LIE_REQUEST,

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import submitTruth from '../actionCreators/submitTruth'
+import changeEnteredTruth from '../actionCreators/changeEnteredTruth'
+
 import FormEnterTruth from '../components/FormEnterTruth'
 
 import { connect } from 'react-redux'
@@ -10,13 +13,22 @@ class PlayGame extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     givenLie: PropTypes.string.isRequired,
+    enteredTruth: PropTypes.string.isRequired,
+    isEnteringTruth: PropTypes.bool.isRequired,
+  }
+  handleSubmitTruth = () => {
+    submitTruth()
+  }
+  handleChangeEnteredTruth = truth => {
+    changeEnteredTruth(truth)
   }
   render() {
-    if (isEnteringTruth) {
+    if (this.props.isEnteringTruth) {
       return (
         <FormEnterTruth>
-          onChangeEnteredTruth={this.props.onChangeEnteredTruth}
-          onSubmitTruth={this.props.onSubmitTruth} WORKINGHERE enteredTruth={this.props.enteredTruth}
+          onChangeEnteredTruth={this.handleChangeEnteredTruth}
+          onSubmitTruth={this.handleSubmitTruth}
+          enteredTruth={this.props.enteredTruth}
         </FormEnterTruth>
       )
     }
@@ -26,7 +38,10 @@ class PlayGame extends Component {
 
 function mapStateToProps(state) {
   const { playGame } = state
-  return { givenLie: playGame.givenLie }
+  return {
+    givenLie: playGame.givenLie,
+    isEnteringTruth: playGame.isEnteringTruth,
+  }
 }
 
 export default connect(mapStateToProps)(PlayGame)
