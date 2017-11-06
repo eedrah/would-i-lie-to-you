@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import openPlayGame from '../actionCreators/openPlayGame'
+import closePlayGame from '../actionCreators/closePlayGame'
+import PlayGame from '../containers/PlayGame'
+
 import openEnterLie from '../actionCreators/openEnterLie'
 import closeEnterLie from '../actionCreators/closeEnterLie'
 import EnterLie from '../containers/EnterLie'
@@ -22,13 +26,21 @@ class App extends Component {
       this.props.dispatch(openEnterLie())
     }
   }
+  handleTogglePlayGame = () => {
+    if (this.props.isPlayingGame) {
+      this.props.dispatch(closePlayGame())
+    } else {
+      this.props.dispatch(openPlayGame())
+    }
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Would I Lie To You?</h1>
         </header>
-        {/*<p className="App-intro">{this.state.data}</p>*/}
+        <h2 onClick={this.handleTogglePlayGame}>Play The Game</h2>
+        {this.props.isPlayingGame ? <PlayGame /> : null}
         <h2 onClick={this.handleToggleEnterLie}>
           Enter Lies Into The Database
         </h2>
