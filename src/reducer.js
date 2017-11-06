@@ -12,6 +12,7 @@ import {
   CLOSE_PLAY_GAME,
   CHANGE_ENTERED_TRUTH,
   CHANGE_STATEMENT,
+  RESET_STATEMENT,
 } from './actions.js'
 
 const enterLie = (
@@ -108,6 +109,11 @@ const playGame = (
         ...state,
         isGettingLie: false,
         errorHasOccurred: true,
+      }
+    case RESET_STATEMENT:
+      return {
+        ...state,
+        isEnteringTruth: true,
       }
     default:
       return state

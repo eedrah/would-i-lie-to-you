@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import submitTruth from '../actionCreators/submitTruth'
 import changeEnteredTruth from '../actionCreators/changeEnteredTruth'
+import resetStatement from '../actionCreators/resetStatement'
 
 import FormEnterTruth from '../components/FormEnterTruth'
 import FormDisplayStatement from '../components/FormDisplayStatement'
@@ -23,6 +24,9 @@ class PlayGame extends Component {
   handleChangeEnteredTruth = truth => {
     this.props.dispatch(changeEnteredTruth(truth))
   }
+  handleReset = () => {
+    this.props.dispatch(resetStatement())
+  }
   render() {
     if (this.props.isEnteringTruth) {
       return (
@@ -33,7 +37,12 @@ class PlayGame extends Component {
         />
       )
     }
-    return <FormDisplayStatement statement={this.props.statement} />
+    return (
+      <FormDisplayStatement
+        statement={this.props.statement}
+        onReset={this.handleReset}
+      />
+    )
   }
 }
 
