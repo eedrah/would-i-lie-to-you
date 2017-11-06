@@ -11,6 +11,7 @@ import {
   CHANGE_ENTERED_LIE,
   OPEN_PLAY_GAME,
   CLOSE_PLAY_GAME,
+  CHANGE_ENTERED_TRUTH,
 } from './actions.js'
 
 const enterLie = (
@@ -77,12 +78,22 @@ const enterLie = (
   }
 }
 
-const playGame = (state = { isActive: false, givenLie: '' }, action) => {
+const playGame = (
+  state = {
+    isActive: false,
+    givenLie: '',
+    isEnteringTruth: true,
+    enteredTruth: '',
+  },
+  action
+) => {
   switch (action.type) {
     case OPEN_PLAY_GAME:
       return { ...state, isActive: true }
     case CLOSE_PLAY_GAME:
       return { ...state, isActive: false }
+    case CHANGE_ENTERED_TRUTH:
+      return { ...state, enteredTruth: action.truth }
     case GET_LIE_SUCCESS:
       return { ...state, givenLie: action.lie }
     default:

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
+import FormEnterTruth from '../components/FormEnterTruth'
+
 import { connect } from 'react-redux'
 //import styles from './PlayGame.css'
 
@@ -9,7 +12,15 @@ class PlayGame extends Component {
     givenLie: PropTypes.string.isRequired,
   }
   render() {
-    return <div>{this.props.givenLie + 'hi'}</div>
+    if (isEnteringTruth) {
+      return (
+        <FormEnterTruth>
+          onChangeEnteredTruth={this.props.onChangeEnteredTruth}
+          onSubmitTruth={this.props.onSubmitTruth} WORKINGHERE enteredTruth={this.props.enteredTruth}
+        </FormEnterTruth>
+      )
+    }
+    return <div>{this.props.givenLie}</div>
   }
 }
 
