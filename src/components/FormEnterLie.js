@@ -26,6 +26,7 @@ function FormEnterLie({
           onSubmitLie(enteredLie)
         }}
       />
+      {isPostingLie ? <p>Loading...</p> : null}
     </div>
   )
 }
