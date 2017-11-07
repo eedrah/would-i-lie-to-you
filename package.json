@@ -18,11 +18,15 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "firebase:update-rules": "cd scripts && node ./updateFirebaseRules.js",
-    "firebase:retrieve-rules": "cd scripts && node ./retrieveFirebaseRules.js"
+    "firebase:retrieve-rules": "cd scripts && node ./retrieveFirebaseRules.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-prettier": "^2.3.1",
+    "gh-pages": "^1.0.0",
     "prettier": "^1.7.4"
-  }
+  },
+  "homepage": "https://eedrah.com/would-i-lie-to-you"
 }
