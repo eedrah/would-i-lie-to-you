@@ -10,7 +10,8 @@ import openEnterLie from '../actionCreators/openEnterLie'
 import closeEnterLie from '../actionCreators/closeEnterLie'
 import EnterLie from './EnterLie'
 
-import './App.css'
+import styles from './App.css'
+import PageTitleImage from '../images/PageTitleImage-1280-720.jpg'
 
 class App extends Component {
   static propTypes = {
@@ -35,9 +36,9 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Would I Lie To You?</h1>
+      <div className={styles.base}>
+        <header>
+          <img src={PageTitleImage} alt="Would I Lie To You?" />
         </header>
         <h2 onClick={this.handleTogglePlayGame}>Play The Game</h2>
         {this.props.isPlayingGame ? <PlayGame /> : null}
