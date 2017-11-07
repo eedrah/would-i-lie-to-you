@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 
 import openPlayGame from '../actionCreators/openPlayGame'
 import closePlayGame from '../actionCreators/closePlayGame'
-import PlayGame from '../containers/PlayGame'
+import PlayGame from './PlayGame'
 
 import openEnterLie from '../actionCreators/openEnterLie'
 import closeEnterLie from '../actionCreators/closeEnterLie'
-import EnterLie from '../containers/EnterLie'
+import EnterLie from './EnterLie'
 
 import './App.css'
 
