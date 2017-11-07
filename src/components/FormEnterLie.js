@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 //import styles from './FormEnterLie.css'
+import Loading from './Loading'
 
 function FormEnterLie({
   onSubmitLie,
@@ -26,7 +27,7 @@ function FormEnterLie({
           onSubmitLie(enteredLie)
         }}
       />
-      {isPostingLie ? <p>Loading...</p> : null}
+      {isPostingLie ? <Loading /> : null}
     </div>
   )
 }

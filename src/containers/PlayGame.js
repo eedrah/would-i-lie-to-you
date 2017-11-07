@@ -7,6 +7,7 @@ import resetStatement from '../actionCreators/resetStatement'
 
 import FormEnterTruth from '../components/FormEnterTruth'
 import FormDisplayStatement from '../components/FormDisplayStatement'
+import Loading from '../components/Loading'
 
 import { connect } from 'react-redux'
 //import styles from './PlayGame.css'
@@ -39,7 +40,7 @@ class PlayGame extends Component {
       )
     }
     if (this.props.isLoading) {
-      return <p>Loading...</p>
+      return <Loading />
     }
     return (
       <FormDisplayStatement
