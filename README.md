@@ -1,3 +1,52 @@
+# Rules
+Purpose:
+The participants get to know each other better. Laugh, have a good time
+
+A party game for 3+ people
+
+Need to think about incentives to make hard truths...
+Maybe a disclaimer saying it should seem unbelievable?
+
+Maybe some penalty for being boring?
+'' incentive to be dificult/interesting/mysterious?
+Maybe some working with the number of questions asked?...
+
+One point for every person says truth
+One point if the guesser guesses correctly
+
+Mechanisims to play with:
+Give points
+Remove points
+Bonus points decided by other participants?
+Exit game
+
+
+(Notice that there is always an incentive for the statement person to seem like they are telling the truth)
+
+Every person has a turn in a round
+
+Rules for coming up with truths:
+- Something the other participants do not know about you
+- Should be something about you, not another person or thing
+- Something unexpected
+- If the other participants believe that your truth is too boring or does not meet this criteria, instead of awarding the points for that round they can deduct a point
+- Have fun! This is a game - try and say something extreme about yourself!
+
+Tips:
+Maybe have some preparation beforehand thinking about truths for yourself
+Bend the rules to your liking - how about making it a drinking game?
+
+
+
+To do:
+Separate dev and prod database
+"Restore last truth"
+Create a button saying "This lie is not suitable for me"
+
+Other ideas:
+Groupings/tags for lies - lies for students/sports fanatics/nerds/parents/elderly
+And can choose the tags
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
