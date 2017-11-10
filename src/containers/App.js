@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Title from '../components/Title'
+import Banner from '../components/Banner'
 
 import openPlayGame from '../actionCreators/openPlayGame'
 import closePlayGame from '../actionCreators/closePlayGame'
@@ -43,11 +44,15 @@ class App extends Component {
         <header>
           <img src={PageTitleImage} alt="Would I Lie To You?" />
         </header>
-        <h2 onClick={this.handleTogglePlayGame}>Play The Game</h2>
+        <Banner>
+          <h2 onClick={this.handleTogglePlayGame}>Play The Game</h2>
+        </Banner>
         {this.props.isPlayingGame ? <PlayGame /> : null}
-        <h2 onClick={this.handleToggleEnterLie}>
-          Enter Lies Into The Database
-        </h2>
+        <Banner>
+          <h2 onClick={this.handleToggleEnterLie}>
+            Enter Lies Into The Database
+          </h2>
+        </Banner>
         {this.props.isEnteringLie ? <EnterLie /> : null}
       </div>
     )
