@@ -1,0 +1,43 @@
+:local(.base) {
+  font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
+    'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', 'sans serif';
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  margin-top: 30px;
+}
+
+:local(.sheet) {
+  composes: base from '../css/texture.css';
+  display: inline-block;
+  background-color: #216767;
+  padding: 10px 30px;
+  transform: rotate(6deg);
+  box-shadow: 1px 1px 2px black;
+}
+
+:local(.sheet) h1 {
+  top-margin: 0.2em;
+  bottom-margin: 0.2em;
+}
+
+:local(.topLeftBanner) {
+  background-color: #0f2a31;
+  display: inline-block;
+  padding: 0.4em;
+  padding-left: 50px;
+  margin-left: -50px;
+  box-shadow: 1px 1px 2px black;
+  /*background: linear-gradient( 100deg, #0f2a31 0%, #0f2a31 96%, black 96%, white 96.3%, white 100%);*/
+}
+
+:local(.bottomRightBanner) {
+  color: #7b0209;
+  text-shadow: none;
+  background-color: #d0cfca;
+  padding-right: 100px;
+  margin-right: -100px;
+  box-shadow: 1px 1px 2px black;
+  padding-left: 0.2em;
+  margin-left: 0.2em;
+}

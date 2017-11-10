@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import Title from '../components/Title'
+
 import openPlayGame from '../actionCreators/openPlayGame'
 import closePlayGame from '../actionCreators/closePlayGame'
 import PlayGame from './PlayGame'
@@ -37,6 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.base}>
+        <Title />
         <header>
           <img src={PageTitleImage} alt="Would I Lie To You?" />
         </header>
