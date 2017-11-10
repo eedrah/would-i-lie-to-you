@@ -1,3 +1,5 @@
+# Work in progess...
+
 # Rules
 Purpose:
 The participants get to know each other better. Laugh, have a good time
