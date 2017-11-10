@@ -10,16 +10,14 @@ body,
   margin: 0;
   padding: 0;
   overflow-y: 'auto';
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e2eaf2+0,cdddeb+17,a0c2de+34,88b5dc+49,8ec3e6+60,94d5f6+71,88badc+84,6297d4+100 */
+
+  /*https://www.cssmatic.com/gradient-generator#'\-moz\-linear\-gradient\%2845deg\%2C\%20rgba\%2835\%2C9\%2C34\%2C1\%29\%200\%25\%2C\%20rgba\%2829\%2C28\%2C50\%2C1\%29\%2059\%25\%2C\%20rgba\%28112\%2C3\%2C6\%2C1\%29\%2064\%25\%2C\%20rgba\%28125\%2C1\%2C1\%2C1\%29\%20100\%25\%29\%3B'*/
+  background: rgba(35, 9, 34, 1);
   background: linear-gradient(
-    135deg,
-    rgba(226, 234, 242, 1) 0%,
-    rgba(205, 221, 235, 1) 17%,
-    rgba(160, 194, 222, 1) 34%,
-    rgba(136, 181, 220, 1) 49%,
-    rgba(142, 195, 230, 1) 60%,
-    rgba(148, 213, 246, 1) 71%,
-    rgba(136, 186, 220, 1) 84%,
-    rgba(98, 151, 212, 1) 100%
+    85deg,
+    rgba(35, 9, 34, 1) 0%,
+    rgba(29, 28, 50, 1) 59.5%,
+    rgba(112, 3, 6, 1) 60%,
+    rgba(125, 1, 1, 1) 100%
   );
 }
