@@ -45,11 +45,9 @@ class App extends Component {
         <header>
           <img src={PageTitleImage} alt="Would I Lie To You?" />
         </header>
-        <Banner direction="left" onClick={this.handleTogglePlayGame}>
-          Play The Game
-        </Banner>
+        <Banner onClick={this.handleTogglePlayGame}>Play The Game</Banner>
         <Tile>{this.props.isPlayingGame ? <PlayGame /> : null}</Tile>
-        <Banner direction="right" onClick={this.handleToggleEnterLie}>
+        <Banner onClick={this.handleToggleEnterLie}>
           Enter Lies Into The Database
         </Banner>
         <Tile>{this.props.isEnteringLie ? <EnterLie /> : null}</Tile>
