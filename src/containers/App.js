@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Title from '../components/Title'
+import Tile from '../components/Tile'
 import Banner from '../components/Banner'
 
 import openPlayGame from '../actionCreators/openPlayGame'
@@ -47,11 +48,11 @@ class App extends Component {
         <Banner direction="left" onClick={this.handleTogglePlayGame}>
           Play The Game
         </Banner>
-        {this.props.isPlayingGame ? <PlayGame /> : null}
+        <Tile>{this.props.isPlayingGame ? <PlayGame /> : null}</Tile>
         <Banner direction="right" onClick={this.handleToggleEnterLie}>
           Enter Lies Into The Database
         </Banner>
-        {this.props.isEnteringLie ? <EnterLie /> : null}
+        <Tile>{this.props.isEnteringLie ? <EnterLie /> : null}</Tile>
       </div>
     )
   }
