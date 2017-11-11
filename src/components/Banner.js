@@ -11,10 +11,7 @@ function Banner({ children, direction, onClick }) {
 
   return (
     <div className={styles.base}>
-      <div
-        className={cn('hvr-pop', styles.banner, directionStyle)}
-        onClick={onClick}
-      >
+      <div className={cn(styles.banner, directionStyle)} onClick={onClick}>
         <h2>{children}</h2>
       </div>
     </div>
