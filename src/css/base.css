@@ -2,3 +2,7 @@ p,
 li {
   text-align: left;
 }
+
+ul {
+  padding-left: 20px;
+}

@@ -1,5 +1,6 @@
 :local(.base) {
-  text-align: center;
+  display: inline-block;
+  max-width: 550px;
 }
 
 :local(.base) img {
