@@ -14,6 +14,8 @@ import {
   CHANGE_STATEMENT,
   RESET_STATEMENT,
   IS_LOADING,
+  OPEN_READ_RULES,
+  CLOSE_READ_RULES,
 } from './actions.js'
 
 const enterLie = (
@@ -27,6 +29,7 @@ const enterLie = (
 ) => {
   switch (action.type) {
     case OPEN_PLAY_GAME:
+    case OPEN_READ_RULES:
       return {
         ...state,
         isActive: false,
@@ -82,6 +85,7 @@ const playGame = (
 ) => {
   switch (action.type) {
     case OPEN_ENTER_LIE:
+    case OPEN_READ_RULES:
       return {
         ...state,
         isActive: false,
@@ -143,6 +147,22 @@ const playGame = (
 
 const readRules = (state = { isActive: false }, action) => {
   switch (action.type) {
+    case OPEN_PLAY_GAME:
+    case OPEN_ENTER_LIE:
+      return {
+        ...state,
+        isActive: false,
+      }
+    case OPEN_READ_RULES:
+      return {
+        ...state,
+        isActive: true,
+      }
+    case CLOSE_READ_RULES:
+      return {
+        ...state,
+        isActive: false,
+      }
     default:
       return state
   }

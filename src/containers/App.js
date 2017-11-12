@@ -6,6 +6,10 @@ import Title from '../components/Title'
 import Tile from '../components/Tile'
 import Banner from '../components/Banner'
 
+import openReadRules from '../actionCreators/openReadRules'
+import closeReadRules from '../actionCreators/closeReadRules'
+import ReadRules from '../components/ReadRules'
+
 import openPlayGame from '../actionCreators/openPlayGame'
 import closePlayGame from '../actionCreators/closePlayGame'
 import PlayGame from './PlayGame'
@@ -38,6 +42,13 @@ class App extends Component {
       this.props.dispatch(openPlayGame())
     }
   }
+  handleToggleReadRules = () => {
+    if (this.props.isReadingRules) {
+      this.props.dispatch(closeReadRules())
+    } else {
+      this.props.dispatch(openReadRules())
+    }
+  }
   render() {
     return (
       <div className={styles.base}>
@@ -45,6 +56,8 @@ class App extends Component {
         <header>
           <img src={PageTitleImage} alt="Would I Lie To You?" />
         </header>
+        <Banner onClick={this.handleToggleReadRules}>Read The Rules</Banner>
+        <Tile>{this.props.isReadingRules ? <ReadRules /> : null}</Tile>
         <Banner onClick={this.handleTogglePlayGame}>Play The Game</Banner>
         <Tile>{this.props.isPlayingGame ? <PlayGame /> : null}</Tile>
         <Banner onClick={this.handleToggleEnterLie}>
