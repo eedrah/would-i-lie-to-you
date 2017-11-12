@@ -11,22 +11,23 @@ function FormEnterLie({
 }) {
   return (
     <div /*className={styles.base}*/>
-      <label>
-        Enter lie:
+      <form>
+        <label>
+          <h3>Enter a lie to submit to the database</h3>
+          <textarea
+            value={enteredLie}
+            onChange={e => onChangeEnteredLie(e.target.value)}
+          />
+        </label>
         <input
-          type="text"
-          value={enteredLie}
-          onChange={e => onChangeEnteredLie(e.target.value)}
+          type="submit"
+          disabled={isPostingLie}
+          onClick={e => {
+            e.preventDefault()
+            onSubmitLie(enteredLie)
+          }}
         />
-      </label>
-      <input
-        type="submit"
-        disabled={isPostingLie}
-        onClick={e => {
-          e.preventDefault()
-          onSubmitLie(enteredLie)
-        }}
-      />
+      </form>
       {isPostingLie ? <Loading /> : null}
     </div>
   )

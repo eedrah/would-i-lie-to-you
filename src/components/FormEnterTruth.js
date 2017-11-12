@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './FormEnterTruth.css'
+//import styles from './FormEnterTruth.css'
 
 function FormEnterTruth({ onSubmitTruth, enteredTruth, onChangeEnteredTruth }) {
   return (
-    <div className={styles.base}>
+    <div /*className={styles.base}*/>
       <form>
         <label>
           <h3>Enter your true statement</h3>
