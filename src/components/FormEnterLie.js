@@ -21,6 +21,7 @@ function FormEnterLie({
         </label>
         <input
           type="submit"
+          value="Submit Lie"
           disabled={isPostingLie}
           onClick={e => {
             e.preventDefault()
