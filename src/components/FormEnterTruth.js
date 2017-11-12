@@ -23,6 +23,7 @@ function FormEnterTruth({ onSubmitTruth, enteredTruth, onChangeEnteredTruth }) {
         </label>
         <input
           type="submit"
+          value="Submit Truth"
           onClick={e => {
             e.preventDefault()
             onSubmitTruth(enteredTruth)
