@@ -1,10 +1,9 @@
-import firebase from '../../firebase'
+import { db } from '../../firebase'
 
 export default () => {
   return new Promise((resolve, reject) => {
-    firebase
-      .database()
-      .ref('lies')
+    db
+      .child('lies')
       .orderByChild('lieCount')
       .limitToLast(1)
       .once('value', lastLieObject => {

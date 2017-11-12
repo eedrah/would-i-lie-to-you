@@ -1,0 +1,16 @@
+{
+  "production": {
+    "lies": {
+      "seed": {
+        "lieCount": 0
+      }
+    }
+  },
+  "development": {
+    "lies": {
+      "seed": {
+        "lieCount": 0
+      }
+    }
+  }
+}

@@ -1,26 +1,54 @@
 {
   "rules": {
-    "lies": {
-      ".indexOn": "lieCount",
-      "$lieId": {
-        ".write": "!data.exists() && newData.exists()",
-        ".validate":
-          "newData.hasChildren(['createdUtc', 'id', 'language', 'statement'])",
-        "statement": {
+    "production": {
+      "lies": {
+        ".indexOn": "lieCount",
+        "$lieId": {
+          ".write": "!data.exists() && newData.exists()",
           ".validate":
-            "newData.isString() && newData.val().length > 0 && newData.val().length < 1000"
+            "newData.hasChildren(['createdUtc', 'id', 'language', 'statement'])",
+          "statement": {
+            ".validate":
+              "newData.isString() && newData.val().length > 0 && newData.val().length < 1000"
+          },
+          "language": {
+            ".validate": "newData.isString() && newData.val() === 'en'"
+          },
+          "id": { ".validate": "newData.val() === $lieId" },
+          "createdUtc": { ".validate": "newData.val() <= now" },
+          "lieCount": {
+            ".validate":
+              "newData.isNumber() && newData.val() > 0 && newData.val() % 1 === 0"
+          },
+          "$other": { ".validate": false }
         },
-        "language": {
-          ".validate": "newData.isString() && newData.val() === 'en'"
+        ".read": true
+      }
+    },
+    "development": {
+      "lies": {
+        ".indexOn": "lieCount",
+        "$lieId": {
+          ".write": "!data.exists() && newData.exists()",
+          ".validate":
+            "newData.hasChildren(['createdUtc', 'id', 'language', 'statement'])",
+          "statement": {
+            ".validate":
+              "newData.isString() && newData.val().length > 0 && newData.val().length < 1000"
+          },
+          "language": {
+            ".validate": "newData.isString() && newData.val() === 'en'"
+          },
+          "id": { ".validate": "newData.val() === $lieId" },
+          "createdUtc": { ".validate": "newData.val() <= now" },
+          "lieCount": {
+            ".validate":
+              "newData.isNumber() && newData.val() > 0 && newData.val() % 1 === 0"
+          },
+          "$other": { ".validate": false }
         },
-        "id": { ".validate": "newData.val() === $lieId" },
-        "createdUtc": { ".validate": "newData.val() <= now" },
-        "lieCount": {
-          ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() % 1 === 0"
-        },
-        "$other": { ".validate": false }
-      },
-      ".read": true
+        ".read": true
+      }
     }
   }
 }
