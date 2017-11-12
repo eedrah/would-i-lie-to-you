@@ -1,4 +1,4 @@
-import firebase from '../firebase'
+import { db } from '../firebase'
 import getLieCount from './private/getLieCount'
 import {
   POST_LIE_REQUEST,
@@ -19,11 +19,7 @@ const postLieFailure = () => ({
 })
 
 const firebasePostLie = (lie, lieCount) => {
-  const lieRef = firebase
-    .database()
-    .ref('lies')
-    .push()
-  console.log(lieCount)
+  const lieRef = db.child('lies').push()
   return lieRef.set({
     id: lieRef.key,
     language: 'en',

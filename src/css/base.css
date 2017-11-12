@@ -1,0 +1,14 @@
+p,
+li {
+  text-align: left;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 3em;
+}

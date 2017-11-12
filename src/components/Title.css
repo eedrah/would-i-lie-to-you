@@ -4,7 +4,9 @@
   text-transform: uppercase;
   color: white;
   text-shadow: 1px 1px 2px black;
-  margin-top: 30px;
+  margin-top: 16px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 :local(.sheet) {
@@ -17,8 +19,8 @@
 }
 
 :local(.sheet) h1 {
-  top-margin: 0.2em;
-  bottom-margin: 0.2em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 :local(.topLeftBanner) {

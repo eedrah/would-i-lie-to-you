@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Title from '../components/Title'
+import Tile from '../components/Tile'
+import Banner from '../components/Banner'
+
+import openReadRules from '../actionCreators/openReadRules'
+import closeReadRules from '../actionCreators/closeReadRules'
+import ReadRules from '../components/ReadRules'
 
 import openPlayGame from '../actionCreators/openPlayGame'
 import closePlayGame from '../actionCreators/closePlayGame'
@@ -36,6 +42,13 @@ class App extends Component {
       this.props.dispatch(openPlayGame())
     }
   }
+  handleToggleReadRules = () => {
+    if (this.props.isReadingRules) {
+      this.props.dispatch(closeReadRules())
+    } else {
+      this.props.dispatch(openReadRules())
+    }
+  }
   render() {
     return (
       <div className={styles.base}>
@@ -43,12 +56,14 @@ class App extends Component {
         <header>
           <img src={PageTitleImage} alt="Would I Lie To You?" />
         </header>
-        <h2 onClick={this.handleTogglePlayGame}>Play The Game</h2>
-        {this.props.isPlayingGame ? <PlayGame /> : null}
-        <h2 onClick={this.handleToggleEnterLie}>
+        <Banner onClick={this.handleToggleReadRules}>Read The Rules</Banner>
+        <Tile>{this.props.isReadingRules ? <ReadRules /> : null}</Tile>
+        <Banner onClick={this.handleTogglePlayGame}>Play The Game</Banner>
+        <Tile>{this.props.isPlayingGame ? <PlayGame /> : null}</Tile>
+        <Banner onClick={this.handleToggleEnterLie}>
           Enter Lies Into The Database
-        </h2>
-        {this.props.isEnteringLie ? <EnterLie /> : null}
+        </Banner>
+        <Tile>{this.props.isEnteringLie ? <EnterLie /> : null}</Tile>
       </div>
     )
   }

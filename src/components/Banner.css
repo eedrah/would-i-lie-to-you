@@ -1,0 +1,29 @@
+:local .base {
+  content: '';
+  display: block;
+}
+
+:local .banner {
+  display: inline-block;
+  background-color: #dda224;
+  box-shadow: 3px 3px 6px black;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+  vertical-align: middle;
+}
+
+:local(.banner):hover,
+:local(.banner):focus,
+:local(.banner):active {
+  animation-name: pop;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+@keyframes pop {
+  50% {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 10px black;
+  }
+}

@@ -1,4 +1,4 @@
-import firebase from '../../firebase'
+import { db } from '../../firebase'
 import getLieCount from './getLieCount'
 import {
   GET_LIE_REQUEST,
@@ -21,9 +21,8 @@ const getLieFailure = () => ({
 
 const firebaseGetLieRefObj = lieCount => {
   const randomLieNumber = Math.floor(Math.random() * lieCount) + 1
-  return firebase
-    .database()
-    .ref('lies')
+  return db
+    .child('lies')
     .orderByChild('lieCount') // Not really needed - could also use keys
     .startAt(randomLieNumber)
     .limitToFirst(1)
