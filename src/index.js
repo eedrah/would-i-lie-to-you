@@ -10,6 +10,7 @@ import registerServiceWorker from './registerServiceWorker'
 import reducer from './reducer'
 
 import 'normalize.css'
+import './css/base.css'
 import './index.css'
 
 let initialState
