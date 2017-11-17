@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'semantic-ui-react'
 
 import submitTruth from '../actionCreators/submitTruth'
 import changeEnteredTruth from '../actionCreators/changeEnteredTruth'
 import resetStatement from '../actionCreators/resetStatement'
+import toggleChooseOwnLie from '../actionCreators/toggleChooseOwnLie'
 
 import FormEnterTruth from '../components/FormEnterTruth'
 import FormDisplayStatement from '../components/FormDisplayStatement'
@@ -19,6 +21,7 @@ class PlayGame extends Component {
     enteredTruth: PropTypes.string.isRequired,
     isEnteringTruth: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    isChoosingOwnLie: PropTypes.bool.isRequired,
   }
   handleSubmitTruth = truth => {
     this.props.dispatch(submitTruth(truth))
@@ -29,14 +32,42 @@ class PlayGame extends Component {
   handleReset = () => {
     this.props.dispatch(resetStatement())
   }
+  handleToggleChooseOwnLie = () => {
+    this.props.dispatch(toggleChooseOwnLie())
+  }
   render() {
     if (this.props.isEnteringTruth) {
       return (
-        <FormEnterTruth
-          onChangeEnteredTruth={this.handleChangeEnteredTruth}
-          onSubmitTruth={this.handleSubmitTruth}
-          enteredTruth={this.props.enteredTruth}
-        />
+        <div>
+          <FormEnterTruth
+            onChangeEnteredTruth={this.handleChangeEnteredTruth}
+            onSubmitTruth={this.handleSubmitTruth}
+            enteredTruth={this.props.enteredTruth}
+          />
+          <Button.Group>
+            <Button
+              active={this.props.isChoosingOwnLie}
+              onClick={
+                this.props.isChoosingOwnLie
+                  ? null
+                  : this.handleToggleChooseOwnLie
+              }
+            >
+              Use your own lie
+            </Button>
+            <Button.Or />
+            <Button
+              active={!this.props.isChoosingOwnLie}
+              onClick={
+                !this.props.isChoosingOwnLie
+                  ? null
+                  : this.handleToggleChooseOwnLie
+              }
+            >
+              Use a lie from the database
+            </Button>
+          </Button.Group>
+        </div>
       )
     }
     if (this.props.isLoading) {
@@ -58,6 +89,7 @@ function mapStateToProps(state) {
     isEnteringTruth: playGame.isEnteringTruth,
     enteredTruth: playGame.enteredTruth,
     isLoading: playGame.isLoading,
+    isChoosingOwnLie: playGame.isChoosingOwnLie,
   }
 }
 
