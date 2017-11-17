@@ -16,6 +16,8 @@ import {
   IS_LOADING,
   OPEN_READ_RULES,
   CLOSE_READ_RULES,
+  TOGGLE_CHOOSE_OWN_LIE,
+  CHANGE_OWN_LIE,
 } from './actions.js'
 
 const enterLie = (
@@ -80,6 +82,8 @@ const playGame = (
     isGettingLie: false,
     errorHasOccurred: false,
     isLoading: false,
+    isChoosingOwnLie: false,
+    ownLie: '',
   },
   action
 ) => {
@@ -139,6 +143,16 @@ const playGame = (
         ...state,
         isLoading: true,
         isEnteringTruth: false,
+      }
+    case TOGGLE_CHOOSE_OWN_LIE:
+      return {
+        ...state,
+        isChoosingOwnLie: !state.isChoosingOwnLie,
+      }
+    case CHANGE_OWN_LIE:
+      return {
+        ...state,
+        ownLie: action.lie,
       }
     default:
       return state

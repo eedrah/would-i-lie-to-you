@@ -10,6 +10,7 @@ import registerServiceWorker from './registerServiceWorker'
 import reducer from './reducer'
 
 import 'normalize.css'
+import 'semantic-ui-css/semantic.min.css'
 import './css/base.css'
 import './index.css'
 
