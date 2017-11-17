@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'semantic-ui-react'
+import { Button, Divider, Header } from 'semantic-ui-react'
 
 import CreateOwnLie from '../components/CreateOwnLie'
 
@@ -16,7 +16,7 @@ function FormEnterTruth({
   return (
     <div /*className={styles.base}*/>
       <label>
-        <h3>Enter your true statement</h3>
+        <Header as="h3">Enter your true statement</Header>
         Remember:
         <ul>
           <li>Something the other participants do not know about you</li>
@@ -30,6 +30,7 @@ function FormEnterTruth({
           onChange={e => onChangeEnteredTruth(e.target.value)}
         />
       </label>
+      <Divider />
       <Button.Group>
         <Button
           active={isChoosingOwnLie}
@@ -48,6 +49,7 @@ function FormEnterTruth({
       {isChoosingOwnLie ? (
         <CreateOwnLie onChange={onChangeOwnLie} value={ownLie} />
       ) : null}
+      <Divider />
       <Button
         onClick={() => {
           console.log(enteredTruth, ownLie, isChoosingOwnLie)

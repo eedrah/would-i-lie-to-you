@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'semantic-ui-react'
+import { Button, Divider, Header } from 'semantic-ui-react'
 
 import Loading from './Loading'
 
@@ -13,12 +13,13 @@ function FormEnterLie({
   return (
     <div /*className={styles.base}*/>
       <label>
-        <h3>Enter a lie to submit to the database</h3>
+        <Header as="h3">Enter a lie to submit to the database</Header>
         <textarea
           value={enteredLie}
           onChange={e => onChangeEnteredLie(e.target.value)}
         />
       </label>
+      <Divider />
       <Button
         disabled={isPostingLie}
         onClick={() => {
