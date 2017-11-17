@@ -10,7 +10,7 @@ const decideTruthOrLie = () => {
     return LIE
   }
 }
-export default truth => dispatch => {
+export default (truth, ownLie) => dispatch => {
   const statementType = decideTruthOrLie()
   switch (statementType) {
     case TRUTH:
@@ -20,7 +20,14 @@ export default truth => dispatch => {
       })
       break
     case LIE:
-      dispatch(getLie())
+      if (ownLie) {
+        dispatch({
+          type: CHANGE_STATEMENT,
+          statement: ownLie,
+        })
+      } else {
+        dispatch(getLie())
+      }
       break
     default:
   }

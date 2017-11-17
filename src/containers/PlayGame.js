@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'semantic-ui-react'
 
 import submitTruth from '../actionCreators/submitTruth'
 import changeEnteredTruth from '../actionCreators/changeEnteredTruth'
@@ -11,7 +10,6 @@ import changeOwnLie from '../actionCreators/changeOwnLie'
 import FormEnterTruth from '../components/FormEnterTruth'
 import FormDisplayStatement from '../components/FormDisplayStatement'
 import Loading from '../components/Loading'
-import CreateOwnLie from '../components/CreateOwnLie'
 
 import { connect } from 'react-redux'
 //import styles from './PlayGame.css'
@@ -26,8 +24,9 @@ class PlayGame extends Component {
     isChoosingOwnLie: PropTypes.bool.isRequired,
     ownLie: PropTypes.string.isRequired,
   }
-  handleSubmitTruth = truth => {
-    this.props.dispatch(submitTruth(truth))
+  handleSubmitTruth = (truth, ownLie) => {
+    console.log('hi', truth, ownLie)
+    this.props.dispatch(submitTruth(truth, ownLie))
   }
   handleChangeEnteredTruth = truth => {
     this.props.dispatch(changeEnteredTruth(truth))
@@ -44,42 +43,15 @@ class PlayGame extends Component {
   render() {
     if (this.props.isEnteringTruth) {
       return (
-        <div>
-          <FormEnterTruth
-            onChangeEnteredTruth={this.handleChangeEnteredTruth}
-            onSubmitTruth={this.handleSubmitTruth}
-            enteredTruth={this.props.enteredTruth}
-          />
-          <Button.Group>
-            <Button
-              active={this.props.isChoosingOwnLie}
-              onClick={
-                this.props.isChoosingOwnLie
-                  ? null
-                  : this.handleToggleChooseOwnLie
-              }
-            >
-              Use your own lie
-            </Button>
-            <Button.Or />
-            <Button
-              active={!this.props.isChoosingOwnLie}
-              onClick={
-                !this.props.isChoosingOwnLie
-                  ? null
-                  : this.handleToggleChooseOwnLie
-              }
-            >
-              Use a lie from the database
-            </Button>
-          </Button.Group>
-          {this.props.isChoosingOwnLie ? (
-            <CreateOwnLie
-              onChange={this.handleChangeOwnLie}
-              value={this.props.ownLie}
-            />
-          ) : null}
-        </div>
+        <FormEnterTruth
+          onChangeEnteredTruth={this.handleChangeEnteredTruth}
+          onSubmitTruth={this.handleSubmitTruth}
+          enteredTruth={this.props.enteredTruth}
+          isChoosingOwnLie={this.props.isChoosingOwnLie}
+          onToggleChooseOwnLie={this.handleToggleChooseOwnLie}
+          ownLie={this.props.ownLie}
+          onChangeOwnLie={this.handleChangeOwnLie}
+        />
       )
     }
     if (this.props.isLoading) {

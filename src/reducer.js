@@ -152,7 +152,7 @@ const playGame = (
     case CHANGE_OWN_LIE:
       return {
         ...state,
-        ownLie: state.lie,
+        ownLie: action.lie,
       }
     default:
       return state
