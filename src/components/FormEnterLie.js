@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-//import styles from './FormEnterLie.css'
+import { Button } from 'semantic-ui-react'
+
 import Loading from './Loading'
 
 function FormEnterLie({
@@ -11,24 +12,21 @@ function FormEnterLie({
 }) {
   return (
     <div /*className={styles.base}*/>
-      <form>
-        <label>
-          <h3>Enter a lie to submit to the database</h3>
-          <textarea
-            value={enteredLie}
-            onChange={e => onChangeEnteredLie(e.target.value)}
-          />
-        </label>
-        <input
-          type="submit"
-          value="Submit Lie"
-          disabled={isPostingLie}
-          onClick={e => {
-            e.preventDefault()
-            onSubmitLie(enteredLie)
-          }}
+      <label>
+        <h3>Enter a lie to submit to the database</h3>
+        <textarea
+          value={enteredLie}
+          onChange={e => onChangeEnteredLie(e.target.value)}
         />
-      </form>
+      </label>
+      <Button
+        disabled={isPostingLie}
+        onClick={() => {
+          onSubmitLie(enteredLie)
+        }}
+      >
+        Submit Lie
+      </Button>
       {isPostingLie ? <Loading /> : null}
     </div>
   )
